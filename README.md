@@ -1,11 +1,11 @@
-# CIIC Harness  
+# Caravel-OpenFPGA-EF
 
-A template SoC for Google SKY130 free shuttles. It is still WIP. The current SoC architecture is given below.
+The repo contains the FPGA layout integration with the [Caravel](https://github.com/efabless/caravel.git) chip.
+Thee layout is an 8x8 FPGA fabric generated using [OpenFPGA](https://github.com/lnis-uofu/OpenFPGA) and hardened using [OpenLANE](https://github.com/efabless/openlane). 
 
-<p align=”center”>
-<img src="/doc/ciic_harness.png" width="75%" height="75%"> 
-</p>
+# Caravel Integration
 
+<<<<<<< HEAD
 
 ## Getting Started:
 
@@ -24,12 +24,17 @@ Then you need to install the open_pdks prerequisite:
  > \* Note: You can avoid the need for the magic prerequisite by using the openlane docker to do the installation step in open_pdks. This [file](https://github.com/efabless/openlane/blob/develop/travisCI/travisBuild.sh) shows how.
 
 Install the required version of the PDK by running the following commands:
+=======
+### Verilog View
 
-```bash
-export PDK_ROOT=<The place where you want to install the pdk>
-make pdk
-```
+The 8x8 fpga interface to the managent area can be found at [fpga_top.v]() . The fabric is conncted to the managemtent area logic analyzer and wishbone bus. 
 
+### GDS View
+>>>>>>> 4c191e772151e556c99e0ebb552f996ccd66eec2
+
+(WIP)
+
+<<<<<<< HEAD
 Then, you can learn more about the caravel chip by watching these video:
 - Caravel User Project Features -- https://youtu.be/zJhnmilXGPo
 - Aboard Caravel -- How to put your design on Caravel? -- https://youtu.be/9QV8SDelURk
@@ -121,3 +126,10 @@ The firmware running on the Management Area SoC, configures the I/O pads used by
 
 [0]: openlane/README.md
 [1]: mpw-one-a.md
+=======
+# To Do
+
+1. Functional verification
+2. Integration with the user project wrapper  
+3. DRC and LVS checks
+>>>>>>> 4c191e772151e556c99e0ebb552f996ccd66eec2
