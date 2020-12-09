@@ -13,7 +13,7 @@ The 8x8 fpga interface to the managent area can be found at [fpga_top.v]() . The
 
 <p align=”center”>
 <img src="doc/images/Caravel-FPGA.png" width="40%" height="40%">
-</p># To Do
+</p>
 
 # To Do
 
