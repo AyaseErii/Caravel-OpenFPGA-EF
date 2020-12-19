@@ -17,6 +17,5 @@ The 8x8 fpga interface to the managent area can be found at [fpga_top.v]() . The
 
 # To Do
 
-1. Functional verification
-2. Integration with the user project wrapper  
+1. Functional and Gate-level verification
 3. DRC and LVS checks
