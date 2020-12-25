@@ -62,7 +62,6 @@
 `include "routing/cby_1__1_.v"
 `include "routing/cby_2__1_.v"
 
-`include "tie_array.v"
 // ------ Include fabric top-level netlists -----
 `include "fpga_core.v"
 

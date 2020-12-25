@@ -21,7 +21,7 @@
 `include "spiflash.v"
 `include "tbuart.v"
 `include "fabric_netlists.v"
-
+`include "tie_array.v"
 // Benchmark
 `include "and2.v"
 
@@ -187,14 +187,14 @@ initial
   assign ccff_tail = mprj_io[35];
 
   assign mprj_io[10:4]  = {7{1'b0}}; 
-  assign mprj_io[18:13] = {6{1'b0}}; 
-  assign mprj_io[24:22] = {2{1'b0}}; 
+  assign mprj_io[17:13] = {6{1'b0}}; 
+  assign mprj_io[24:21] = {2{1'b0}}; 
   assign mprj_io[34:27] = {7{1'b0}}; 
 
-  assign mprj_io[20] = a[0]; 
-  assign mprj_io[21] = b[0]; 
+  assign mprj_io[19] = a[0]; 
+  assign mprj_io[18] = b[0]; 
 
-  assign out_c_fpga[0] = mprj_io[19];
+  assign out_c_fpga[0] = mprj_io[20];
 
 // ----- Reference Benchmark Instanication -------
 	and2 REF_DUT(

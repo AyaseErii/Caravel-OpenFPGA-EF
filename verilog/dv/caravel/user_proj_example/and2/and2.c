@@ -104,7 +104,7 @@ void main() {
   reg_mprj_io_16 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
   reg_mprj_io_17 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
   reg_mprj_io_18 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
-  reg_mprj_io_20 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
+  reg_mprj_io_19 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
   reg_mprj_io_21 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
   reg_mprj_io_22 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
   reg_mprj_io_24 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
@@ -124,7 +124,7 @@ void main() {
   reg_mprj_io_35 =  GPIO_MODE_USER_STD_OUTPUT;
 
   // Implementation outputs
-  reg_mprj_io_19 =  GPIO_MODE_USER_STD_OUTPUT;
+  reg_mprj_io_20 =  GPIO_MODE_USER_STD_OUTPUT;
 
   /* Apply configuration */
   reg_mprj_xfer = 1;
