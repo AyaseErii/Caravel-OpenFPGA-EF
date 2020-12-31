@@ -20,6 +20,7 @@
 `include "caravel.v"
 `include "spiflash.v"
 `include "fabric_netlists.v"
+`include "tie_array.v"
 
 `define FPGA_SCANCHAIN_SIZE 1024
 

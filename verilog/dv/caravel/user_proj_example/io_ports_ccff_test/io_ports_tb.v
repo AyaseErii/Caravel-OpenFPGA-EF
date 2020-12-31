@@ -20,6 +20,7 @@
 `include "caravel.v"
 `include "spiflash.v"
 `include "fabric_netlists.v"
+`include "tie_array.v"
 
 `define FPGA_BITSTREAM_SIZE 29696
 
@@ -211,7 +212,7 @@ module io_ports;
   initial begin
     $dumpfile("io_ports.vcd");
   	$dumpvars(0, io_ports);
-      repeat (`FPGA_BITSTREAM_SIZE) @(posedge prog_clk);
+      repeat (`FPGA_BITSTREAM_SIZE + 10) @(posedge prog_clk);
     $display("%c[1;31m",27);
     $display ("Monitor: Timeout, Test Mega-Project IO (ccff_test) Failed");
     $display("%c[0m",27);
