@@ -14,6 +14,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+
 FIRMWARE_PATH = ../..
 VERILOG_PATH = ../../../..
 RTL_PATH = $(VERILOG_PATH)/rtl
@@ -39,12 +40,18 @@ hex:  ${PATTERN:=.hex}
 %.vvp: %_tb.v %.hex
 ifeq ($(SIM),RTL)
 	iverilog -DFUNCTIONAL -DSIM -I $(BEHAVIOURAL_MODELS) \
+<<<<<<< HEAD:verilog/dv/caravel/user_proj_example/and2/Makefile
 	-I $(PDK_PATH) -I $(IP_PATH) -I $(RTL_PATH) -I $(USER_PROJ_RTL) \
 	$< -o $@
 else
-	iverilog -DFUNCTIONAL -DSIM -DGL -I $(BEHAVIOURAL_MODELS) \
+=======
 	-I $(PDK_PATH) -I $(IP_PATH) -I $(RTL_PATH) \
-	$< -o $@
+	$< -o $@ 
+else  
+>>>>>>> debe3c7105665c35883e51acfde22aa9fae7f314:verilog/dv/caravel/user_proj_example/la_test2/Makefile
+	iverilog -DFUNCTIONAL -DSIM -DGL -I $(BEHAVIOURAL_MODELS) \
+	-I $(PDK_PATH) -I $(IP_PATH) -I $(VERILOG_PATH) -I $(RTL_PATH) \
+	$< -o $@ 
 endif
 
 %.vcd: %.vvp

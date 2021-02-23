@@ -39,12 +39,18 @@ hex:  ${PATTERN:=.hex}
 %.vvp: %_tb.v %.hex
 ifeq ($(SIM),RTL)
 	iverilog -DFUNCTIONAL -DSIM -I $(BEHAVIOURAL_MODELS) \
+<<<<<<< HEAD:verilog/dv/caravel/user_proj_example/io_ports_ccff_test/Makefile
 	-I $(PDK_PATH) -I $(IP_PATH) -I $(RTL_PATH) -I $(USER_PROJ_RTL) \
 	$< -o $@
 else
-	iverilog -DFUNCTIONAL -DSIM -DGL -I $(BEHAVIOURAL_MODELS) \
+=======
 	-I $(PDK_PATH) -I $(IP_PATH) -I $(RTL_PATH) \
-	$< -o $@
+	$< -o $@ 
+else  
+>>>>>>> debe3c7105665c35883e51acfde22aa9fae7f314:verilog/dv/caravel/user_proj_example/io_ports/Makefile
+	iverilog -DFUNCTIONAL -DSIM -DGL -I $(BEHAVIOURAL_MODELS) \
+	-I $(PDK_PATH) -I $(IP_PATH) -I $(VERILOG_PATH) -I $(RTL_PATH) \
+	$< -o $@ 
 endif
 
 %.vcd: %.vvp
