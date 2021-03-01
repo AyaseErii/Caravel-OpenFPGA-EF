@@ -1,6 +1,6 @@
 --- 
 project: 
-  description: "A template SoC for Google sponsored Open MPW shuttles for SKY130."
+  description: "8x8 FPGA designed using OpenFPGA and hardened using OpenLANE."
   foundry: "SkyWater"
   git_url: "https://github.com/Manarabdelaty/Caravel-OpenFPGA-EF"
   organization: "Efabless"
