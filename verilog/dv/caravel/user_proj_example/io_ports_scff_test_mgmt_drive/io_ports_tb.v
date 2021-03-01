@@ -112,7 +112,7 @@ module scff_test_post_pnr_caravel_autocheck_top_tb;
       wait(checkbits === 7'h4);
       $display("Test started.. ");
       #(2 * `FPGA_CLOCK_PERIOD)  greset[0] = 1'b0;
-      wait(checkbits === 7'h6);
+      wait(checkbits === 7'h0C);
       #5000;
       $display("Simulation ended successfuly..");
       $finish;
@@ -123,8 +123,8 @@ module scff_test_post_pnr_caravel_autocheck_top_tb;
   assign op_clk[0] = op_clock[0];
   assign prog_clk[0] = prog_clock[0];
   // ----- End connecting global ports of FPGA fabric to stimuli -----
-  assign mprj_io[36] = op_clk;
-  assign mprj_io[37] = prog_clk;
+  // assign mprj_io[36] = op_clk;
+  // assign mprj_io[37] = prog_clk;
 
   // External clock is used by default.  Make this artificially fast for the
   // simulation.  Normally this would be a slow clock and the digital PLL

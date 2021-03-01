@@ -49,7 +49,20 @@
  * - Configure FPGA data I/Os to be input
 */
 
+#define CLK_PULSE() reg_mprj_datah = 0x0; DELAY(5); reg_mprj_datah =  0x10; DELAY(5) // only proj_clk
+#define DELAY(n) for(int i=0; i<n; i=i+1) { ; }
+#define FPGA_IN(Test_en, IO_ISOL_N, ccff_head, sc_head, LA, checkbits) \
+        reg_mprj_datal = (LA << 25) | (sc_head << 26) | (ccff_head << 12) | (checkbits << 6) | (IO_ISOL_N << 1) | (Test_en << 0)
+
 void main() {
+
+  int Test_en;
+  int IO_ISOL_N;
+  int ccff_head;
+  int sc_head;
+  int LA;
+  int checkbits;
+
   /* 
   IO Control Registers
   | DM     | VTRIP | SLOW  | AN_POL | AN_SEL | AN_EN | MOD_SEL | INP_DIS | HOLDH | OEB_N | MGMT_EN |
@@ -116,8 +129,12 @@ void main() {
   reg_mprj_io_32 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
   reg_mprj_io_33 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
   reg_mprj_io_34 =  GPIO_MODE_USER_STD_INPUT_NOPULL;
-  reg_mprj_io_36 =  GPIO_MODE_USER_STD_INPUT_NOPULL;  // OP_CLK
-  reg_mprj_io_37 =  GPIO_MODE_USER_STD_INPUT_NOPULL;  // PROG_CLK
+
+  // reg_mprj_io_36 =  GPIO_MODE_USER_STD_INPUT_NOPULL;  // OP_CLK
+  // reg_mprj_io_37 =  GPIO_MODE_USER_STD_INPUT_NOPULL;  // PROG_CLK
+
+  reg_mprj_io_36 =  GPIO_MODE_MGMT_STD_BIDIRECTIONAL;  // OP_CLK
+  reg_mprj_io_37 =  GPIO_MODE_MGMT_STD_BIDIRECTIONAL;  // PROG_CLK
   // Only specify those should be in output mode
   reg_mprj_io_11 =  GPIO_MODE_USER_STD_OUT_MONITORED;
   reg_mprj_io_35 =  GPIO_MODE_USER_STD_OUT_MONITORED;
@@ -133,32 +150,47 @@ void main() {
   reg_mprj_io_12 = GPIO_MODE_MGMT_STD_OUTPUT;
   reg_mprj_io_25 = GPIO_MODE_MGMT_STD_OUTPUT;
   reg_mprj_io_26 = GPIO_MODE_MGMT_STD_OUTPUT;
+  reg_mprj_io_36 = GPIO_MODE_MGMT_STD_OUTPUT;  // OP_CLK
+  reg_mprj_io_37 = GPIO_MODE_MGMT_STD_OUTPUT;  // PROG_CLK
 
   // Drive Inputs & Flag start of the test
-  /* 
-    sc_head   = 1;
-    Test_en   = 0;
-    IO_ISOL_N = 0;
-    ccff_head = 0;
-    LA        = 0;
-  */
-  reg_mprj_datal = (reg_mprj_datal | (1 << 26) | (1 << 6) ) & ~(1 << 0) & ~(1 << 1) & ~(1 << 12) & ~(1 << 25); 
+
+  CLK_PULSE();
+
+  sc_head   = 1;
+  Test_en   = 0;
+  IO_ISOL_N = 0;
+  ccff_head = 0;
+  LA        = 0;
+  checkbits = 1;
+
+  FPGA_IN(Test_en, IO_ISOL_N, ccff_head, sc_head, LA, checkbits);
+
+  CLK_PULSE();
+  // Drive scan-chain head to zero
+  sc_head   = 1;
+  Test_en   = 1;
+  IO_ISOL_N = 1;
+  ccff_head = 0;
+  LA        = 0;
+ 
+  FPGA_IN(Test_en, IO_ISOL_N, ccff_head, sc_head, LA, checkbits);
+  CLK_PULSE();
 
   // Drive scan-chain head to zero
-  /*
-    sc_head   = 0;
-    Test_en   = 1;
-    IO_ISOL_N = 1;
-    ccff_head = 0;
-    LA        = 0;
-  */
-  reg_mprj_datal = reg_mprj_datal | (1 << 1) | (1 << 0) & ~(1 << 12) & ~(1 << 25);   
-  reg_mprj_datal = (reg_mprj_datal & ~(1 << 26) & ~(1 << 12) & ~(1 << 25)) | ( 1 << 0) | (1 << 1);
+  sc_head   = 0;
+  FPGA_IN(Test_en, IO_ISOL_N, ccff_head, sc_head, LA, checkbits);
 
-  // Check the value of scan-chain tail mprj_io[11]
-  while ((reg_mprj_datal & 0x800) != 0x800);
+  // Pulse the clock
+  CLK_PULSE();
+
+  for (int i=0; i<1024; i=i+1) {
+    // Pulse the clock
+    CLK_PULSE();
+  }
+  // // Check the value of scan-chain tail mprj_io[11]
+  // while ((reg_mprj_datal & 0x800) != 0x800);
   
-  // Flag end of the test
-  reg_mprj_datal = (reg_mprj_datal & ~(1 << 26) & ~(1 << 12) & ~(1 << 25)) | ( 1 << 0) | (1 << 1) | (1 << 5);
-
+  checkbits = 3;
+  FPGA_IN(Test_en, IO_ISOL_N, ccff_head, sc_head, LA, checkbits);
 }
