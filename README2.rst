@@ -30,8 +30,8 @@ Table of contents
 -  `Caravel Architecture <#caravel-architecture>`__
 -  `Quick Start for User Projects  <#quick-start-for-user-projects>`__
 
-   - `Digital User Project <#digital_project>`__
-   - `Analog User Project <#analog-project>`__
+   - `Digital User Project <#digital-user-project>`__
+   - `Analog User Project <#analog-user-project>`__
 
 -  `Required Directory Structure <#required-directory-structure>`__
 -  `Additional Material <#additional-material>`__
@@ -100,10 +100,10 @@ Your area is the full user space, so feel free to add your
 project there or create a differnt macro and harden it seperately then
 insert it into the ``user_project_wrapper`` for digital projects or insert it into ``user_project_analog_wrapper`` for analog projects. 
 
-.. _digital-project:
+.. _digital-user-project:
 
-Digital Project
---------------
+Digital User Project
+--------------------
 
 If you are building a digital project for the user space, check a sample project at  `caravel_user_project <https://github.com/efabless/caravel_user_project>`__. 
 
@@ -117,11 +117,12 @@ Digital user projects should adhere the following requirements:
 
 >:ballot_box_with_check: The ``user_project_wrapper`` adheres to the fixed design configurations at `Digital Wrapper Fixed Configuration <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl>`__.
 
+>:ballot_box_with_check: The user project repository adheres to the `Required Directory Structure <#required-directory-structure>`__.
 
-.. _analog-project:
+.. _analog-user-project:
 
-Analog Project
---------------
+Analog User Project
+------------------
 
 If you are building an analog project for the user space, check a sample project at `caravel_user_project_analog <https://github.com/efabless/caravel_user_project_analog>`__. 
 
@@ -133,6 +134,9 @@ Analog user projects should adhere the following requirements:
 
 >:ballot_box_with_check: The ``user_project_analog_wrapper`` adheres to the fixed design configurations at `Analog Wrapper Fixed Configuration <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl>`__.
 
+>:ballot_box_with_check: The user project repository adheres to the `Required Directory Structure <#required-directory-structure>`__.
+
+------
 
 IMPORTANT
 ^^^^^^^^^
@@ -142,7 +146,9 @@ your repository. Avoid having 2 versions of the
 ``gds/user_project_wrapper.gds`` one compressed and the
 other not compressed.
 
--  For information on tooling and versioning, please refer to `tool-versioning.rst <./docs/source/tool-versioning.rst>`__.
+For information on tooling and versioning, please refer to `tool-versioning.rst <./docs/source/tool-versioning.rst>`__.
+
+-----
 
 Required Directory Structure
 ============================
@@ -180,6 +186,13 @@ Required Directory Structure
 
 Additional Material
 ===============
+
+.. _mpw-two:
+
+MPW Two
+--------
+
+- `MPW Two Shuttle Program <https://efabless.com/open_shuttle_program/2>`__
 
 .. _mpw-one:
 
