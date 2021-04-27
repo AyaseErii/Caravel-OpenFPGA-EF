@@ -30,8 +30,8 @@ Table of contents
 -  `Caravel Architecture <#caravel-architecture>`__
 -  `Quick Start for User Projects  <#quick-start-for-user-projects>`__
 
-   - `Digital User Project <#digital-user_project>`__
-   - `Analog User Project <#analog-user-project>`__
+   - `Digital User Project <#digital_project>`__
+   - `Analog User Project <#analog-project>`__
 
 -  `Required Directory Structure <#required-directory-structure>`__
 -  `Additional Material <#additional-material>`__
@@ -98,23 +98,40 @@ Quick Start for User Projects
 
 Your area is the full user space, so feel free to add your
 project there or create a differnt macro and harden it seperately then
-insert it into the ``user_project_wrapper``. 
+insert it into the ``user_project_wrapper`` for digital projects or insert it into ``user_project_analog_wrapper`` for analog projects. 
 
-.. _digital-user-project:
+.. _digital-project:
 
 Digital Project
 --------------
 
-If you are building a digital project for the user space, check `caravel_user_project <https://github.com/efabless/caravel_user_project>`__. 
+If you are building a digital project for the user space, check a sample project at  `caravel_user_project <https://github.com/efabless/caravel_user_project>`__. 
 
 If you will use OpenLANE to harden your design, go through the instructions in this `README <https://github.com/efabless/caravel/blob/master/openlane/README.rst>`__.
 
-.. _analog-user-project:
+Digital user projects should adhere the following requirements: 
+
+>:ballot_box_with_check: Top module is named ``user_project_wrapper`` 
+
+>:ballot_box_with_check: The ``user_project_wrapper`` adheres to the pin order defined at `Digital Wrapper Pin Order <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/pin_order.cfg>`__.
+
+>:ballot_box_with_check: The ``user_project_wrapper`` adheres to the fixed design configurations at `Digital Wrapper Fixed Configuration <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl>`__.
+
+
+.. _analog-project:
 
 Analog Project
 --------------
 
-If you are building an analog project for the user space, check `caravel_user_project_analog <https://github.com/efabless/caravel_user_project_analog>`__. 
+If you are building an analog project for the user space, check a sample project at `caravel_user_project_analog <https://github.com/efabless/caravel_user_project_analog>`__. 
+
+Analog user projects should adhere the following requirements: 
+
+>:ballot_box_with_check: Top module is named ``user_project_analog_wrapper``
+
+>:ballot_box_with_check: The ``user_project_analog_wrapper`` adheres to the pin order defined at `Analog Wrapper Pin Order <https://github.com/efabless/caravel/blob/develop/openlane/user_analog_project_wrapper_empty/pin_order.cfg>`__.
+
+>:ballot_box_with_check: The ``user_project_analog_wrapper`` adheres to the fixed design configurations at `Analog Wrapper Fixed Configuration <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl>`__.
 
 
 IMPORTANT
@@ -122,7 +139,7 @@ IMPORTANT
 
 Please make sure to run ``make compress`` before commiting anything to
 your repository. Avoid having 2 versions of the
-``gds/user\_project\_wrapper.gds`` one compressed and the
+``gds/user_project_wrapper.gds`` one compressed and the
 other not compressed.
 
 -  For information on tooling and versioning, please refer to `tool-versioning.rst <./docs/source/tool-versioning.rst>`__.
@@ -151,7 +168,7 @@ Required Directory Structure
 -  ``info.yaml``: includes all the info required in `this
    example <https://github.com/efabless/caravel/blob/master/info.yaml>`__. Please make sure that you are pointing to an
    elaborated caravel netlist as well as a synthesized
-   gate-level-netlist for the user\_project\_wrapper
+   gate-level-netlist for the `user_project_wrapper`
 
 
 **NOTE:**
@@ -164,13 +181,6 @@ Required Directory Structure
 Additional Material
 ===============
 
-.. _mpw-two:
-
-MPW Two
---------------
-
-Watch slack space for the coming webinar announcment.
-
 .. _mpw-one:
 
 MPW One
@@ -179,10 +189,11 @@ MPW One
 -  `Caravel User Project Features -- What are the utilities provided by caravel to the user project ? <https://youtu.be/zJhnmilXGPo>`__ 
 -  `Aboard Caravel -- How to integrate your design with Caravel? <https://youtu.be/9QV8SDelURk>`__   
 -  `Things to Clarify About Caravel -- What versions to use with Caravel? <https://youtu.be/-LZ522mxXMw>`__ 
+- `45 Chips in 30 Days: Open Source ASIC at its best! <https://www.youtube.com/watch?v=qlBzE27at6M>`__
 
 Check ``mpw-one-final`` for the caravel used for the mpw-one tapeout. 
 
-> :warning: You don't need to integrate your design with Caravel GDS for mpw-two. Running ``make ship`` is no longer required.
+> :warning: You don't need to integrate your design with Caravel GDS for **MPW two**. Running ``make ship`` is no longer required.
 
 
 .. |License| image:: https://img.shields.io/github/license/efabless/caravel
