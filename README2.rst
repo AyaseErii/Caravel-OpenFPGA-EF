@@ -98,7 +98,7 @@ Quick Start for User Projects
 
 Your area is the full user space, so feel free to add your
 project there or create a differnt macro and harden it seperately then
-insert it into the ``user\_project\_wrapper``. 
+insert it into the ``user_project_wrapper``. 
 
 .. _digital-user-project:
 
