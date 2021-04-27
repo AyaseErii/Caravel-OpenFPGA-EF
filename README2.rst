@@ -176,15 +176,13 @@ Watch slack space for the coming webinar announcment.
 MPW One
 --------------
 
-You can learn more about the caravel chip by watching these video:
-
 -  `Caravel User Project Features -- What are the utilities provided by caravel to the user project ? <https://youtu.be/zJhnmilXGPo>`__ 
 -  `Aboard Caravel -- How to integrate your design with Caravel? <https://youtu.be/9QV8SDelURk>`__   
 -  `Things to Clarify About Caravel -- What versions to use with Caravel? <https://youtu.be/-LZ522mxXMw>`__ 
 
 Check ``mpw-one-final`` for the caravel used for the mpw-one tapeout. 
 
-> :warning: You don't need to integrated your design with Caravel GDS for mpw-two. Running ``make ship`` is no longer required.
+> :warning: You don't need to integrate your design with Caravel GDS for mpw-two. Running ``make ship`` is no longer required.
 
 
 .. |License| image:: https://img.shields.io/github/license/efabless/caravel
