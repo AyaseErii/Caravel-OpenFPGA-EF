@@ -127,13 +127,17 @@ If you will use OpenLANE to harden your design, go through the instructions in t
 
 Digital user projects should adhere the following requirements:
 
->:ballot_box_with_check: Top module is named ``user_project_wrapper``
+- Top module is named ``user_project_wrapper``
 
->:ballot_box_with_check: The ``user_project_wrapper`` adheres to the pin order defined at `Digital Wrapper Pin Order <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/pin_order.cfg>`__.
 
->:ballot_box_with_check: The ``user_project_wrapper`` adheres to the fixed design configurations at `Digital Wrapper Fixed Configuration <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl>`__.
+- The ``user_project_wrapper`` adheres to the pin order defined at `Digital Wrapper Pin Order <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/pin_order.cfg>`__.
 
->:ballot_box_with_check: The user project repository adheres to the `Required Directory Structure <#required-directory-structure>`__.
+
+- The ``user_project_wrapper`` adheres to the fixed design configurations at `Digital Wrapper Fixed Configuration <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl>`__.
+
+
+- The user project repository adheres to the `Required Directory Structure <#required-directory-structure>`__.
+
 
 .. _analog-user-project:
 
@@ -144,13 +148,13 @@ If you are building an analog project for the user space, check a sample project
 
 Analog user projects should adhere the following requirements:
 
->:ballot_box_with_check: Top module is named ``user_project_analog_wrapper``
+- Top module is named ``user_project_analog_wrapper``
 
->:ballot_box_with_check: The ``user_project_analog_wrapper`` adheres to the pin order defined at `Analog Wrapper Pin Order <https://github.com/efabless/caravel/blob/develop/openlane/user_analog_project_wrapper_empty/pin_order.cfg>`__.
+- The ``user_project_analog_wrapper`` adheres to the pin order defined at `Analog Wrapper Pin Order <https://github.com/efabless/caravel/blob/develop/openlane/user_analog_project_wrapper_empty/pin_order.cfg>`__.
 
->:ballot_box_with_check: The ``user_project_analog_wrapper`` adheres to the fixed design configurations at `Analog Wrapper Fixed Configuration <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl>`__.
+- The ``user_project_analog_wrapper`` adheres to the fixed design configurations at `Analog Wrapper Fixed Configuration <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl>`__.
 
->:ballot_box_with_check: The user project repository adheres to the `Required Directory Structure <#required-directory-structure>`__.
+- The user project repository adheres to the `Required Directory Structure <#required-directory-structure>`__.
 
 ------
 
