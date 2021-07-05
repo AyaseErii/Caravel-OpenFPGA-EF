@@ -59,6 +59,7 @@ jobs:
       - name: Run Digital User Project DV
         run: | 
           export CARAVEL_ROOT=$(pwd)
+          export PDK_PATH=$(pwd)/pdks/sky130A
           cd caravel_user_project
           make verify-io_ports
           make verify-la_test1
@@ -72,6 +73,7 @@ jobs:
       
       - name: Run Analog User Project DV
         run: | 
+          export PDK_PATH=$(pwd)/pdks/sky130A
           cd caravel_user_project_analog
           make verify-mprj_por
           SIM=GL make verify-mprj_por
