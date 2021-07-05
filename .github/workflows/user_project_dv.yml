@@ -59,6 +59,7 @@ jobs:
       - name: Run Digital User Project DV
         run: | 
           export CARAVEL_ROOT=${GITHUB_WORKSPACE}
+          export PDK_ROOT=${GITHUB_WORKSPACE}/pdks
           export PDK_PATH=${GITHUB_WORKSPACE}/pdks/sky130A
           cd caravel_user_project
           make verify-io_ports
@@ -74,6 +75,7 @@ jobs:
       - name: Run Analog User Project DV
         run: | 
           export CARAVEL_ROOT=${GITHUB_WORKSPACE}
+          export PDK_ROOT=${GITHUB_WORKSPACE}/pdks
           export PDK_PATH=${GITHUB_WORKSPACE}/pdks/sky130A
           cd caravel_user_project_analog
           make verify-mprj_por
