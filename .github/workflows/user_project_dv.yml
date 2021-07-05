@@ -50,11 +50,11 @@ jobs:
           export PDK_ROOT=$(pwd)/pdks
           make pdk
 
-     - name: Install The Dockerized DV Setup
-       run:  docker pull efabless/dv_setup:latest
+      - name: Install The Dockerized DV Setup
+        run:  docker pull efabless/dv_setup:latest
 
-     - name: Clone user project repos 
-       run: | 
+      - name: Clone user project repos 
+        run: | 
           git clone https://github.com/efabless/caravel_user_project.git --depth 1 --branch main
           git clone https://github.com/efabless/caravel_user_project_analog.git --depth 1 --branch main
           export CARAVEL_ROOT=$(pwd)
