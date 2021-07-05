@@ -45,18 +45,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Install The PDK
-        run: |
-          export PDK_ROOT=$(pwd)/pdks
-          make pdk
-
       - name: Install The Dockerized DV Setup
         run:  docker pull efabless/dv_setup:latest
-
+        
       - name: Clone user project repos 
         run: | 
           git clone https://github.com/efabless/caravel_user_project.git --depth 1 --branch main
           git clone https://github.com/efabless/caravel_user_project_analog.git --depth 1 --branch main
+
+      - name: Install The PDK
+        run:  bash ${GITHUB_WORKSPACE}/caravel_user_project/.github/scripts/dv/pdkBuild.sh
+        
+      - name: Run DV
+        run: | 
           export CARAVEL_ROOT=$(pwd)
           cd caravel_user_project
           make verify-io_ports
