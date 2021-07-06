@@ -68,6 +68,7 @@ jobs:
         run: | 
           echo $(pwd)
           ls
+          export CARAVEL_ROOT=${GITHUB_WORKSPACE}
           cd ${GITHUB_WORKSPACE}/caravel_user_project
           make help
           make verify-io_ports
