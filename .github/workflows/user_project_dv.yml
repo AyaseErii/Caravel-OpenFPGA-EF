@@ -56,10 +56,11 @@ jobs:
       - name: Install The PDK
         run:  |
              export PDK_ROOT=${GITHUB_WORKSPACE}/pdks
+             docker pull efabless/openlane:v0.20 
              make skywater-pdk 
              make skywater-library
              make open_pdks
-             make build-pdk
+             docker run -it -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT efabless/openlane:v0.20 bash -c "make build-pdk"
         
       - name: Run Digital User Project DV
         run: | 
