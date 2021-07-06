@@ -51,22 +51,24 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
         
-      - name: Install The Dockerized DV Setup
-        run:  docker pull efabless/dv_setup:latest
+#       - name: Install The Dockerized DV Setup
+#         run:  docker pull efabless/dv_setup:latest
         
       - name: Clone user project repos 
         run: | 
           git clone https://github.com/efabless/caravel_user_project.git --depth 1 --branch main
           git clone https://github.com/efabless/caravel_user_project_analog.git --depth 1 --branch main
 
-      - name: Install The PDK
-        run: bash ${GITHUB_WORKSPACE}/.travisCI/utils/pdkBuild.sh
-        env: 
-          OPENLANE_TAG: v0.20
+#       - name: Install The PDK
+#         run: bash ${GITHUB_WORKSPACE}/.travisCI/utils/pdkBuild.sh
+#         env: 
+#           OPENLANE_TAG: v0.20
           
       - name: Run Digital User Project DV
         run: | 
-          cd caravel_user_project
+          ehco $(pwd)
+          ls
+          cd ${GITHUB_WORKSPACE}/caravel_user_project
           make help
           make verify-io_ports
 #bash ${GITHUB_WORKSPACE}/caravel_user_project/.github/scripts/dv/run-dv-wrapper.sh 0,1,2,3,4 RTL
