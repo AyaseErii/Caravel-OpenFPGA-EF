@@ -54,13 +54,18 @@ jobs:
           git clone https://github.com/efabless/caravel_user_project_analog.git --depth 1 --branch main
 
       - name: Install The PDK
-        run:  bash ${GITHUB_WORKSPACE}/caravel_user_project/.github/scripts/dv/pdkBuild.sh
+        run:  |
+             export PDK_ROOT=${GITHUB_WORKSPACE}/pdks
+             make skywater-pdk 
+             make skywater-library
+             make open_pdks
+             make build-pdk
         
       - name: Run Digital User Project DV
         run: | 
           export CARAVEL_ROOT=${GITHUB_WORKSPACE}
-          export PDK_ROOT=${GITHUB_WORKSPACE}/../pdks
-          export PDK_PATH=${GITHUB_WORKSPACE}/../pdks/sky130A
+          export PDK_ROOT=${GITHUB_WORKSPACE}/pdks
+          export PDK_PATH=${GITHUB_WORKSPACE}/pdks/sky130A
           cd caravel_user_project
           make verify-io_ports
           make verify-la_test1
