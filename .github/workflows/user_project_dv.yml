@@ -58,6 +58,7 @@ jobs:
         run: | 
           git clone https://github.com/efabless/caravel_user_project.git --depth 1 --branch main
           git clone https://github.com/efabless/caravel_user_project_analog.git --depth 1 --branch main
+          git clone https://github.com/efabless/caravel.git --depth 1 --branch develop
 
       - name: Install The PDK
         run: bash ${GITHUB_WORKSPACE}/caravel_user_project/.github/scripts/dv/pdkBuild.sh
@@ -68,7 +69,7 @@ jobs:
         run: | 
           echo $(pwd)
           ls
-          export CARAVEL_ROOT=${GITHUB_WORKSPACE}
+          export CARAVEL_ROOT=${GITHUB_WORKSPACE}/caravel
           export PDK_ROOT=`realpath ../pdks`
           cd ${GITHUB_WORKSPACE}/caravel_user_project
           make verify-io_ports
@@ -83,7 +84,7 @@ jobs:
           
       - name: Run Analog User Project DV
         run: | 
-          export CARAVEL_ROOT=${GITHUB_WORKSPACE}
+          export CARAVEL_ROOT=${GITHUB_WORKSPACE}/caravel
           export PDK_ROOT=`realpath ../pdks`
           cd caravel_user_project_analog
           make verify-mprj_por
