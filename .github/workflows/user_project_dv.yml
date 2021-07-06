@@ -60,7 +60,7 @@ jobs:
           git clone https://github.com/efabless/caravel_user_project_analog.git --depth 1 --branch main
 
       - name: Install The PDK
-        run: bash ${GITHUB_WORKSPACE}/.travisCI/utils/pdkBuild.sh
+        run: bash ${GITHUB_WORKSPACE}/caravel_user_project/.github/scripts/dv/pdkBuild.sh
         env: 
           OPENLANE_TAG: v0.20
           
