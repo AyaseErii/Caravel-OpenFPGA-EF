@@ -70,15 +70,21 @@ jobs:
           ls
           export CARAVEL_ROOT=${GITHUB_WORKSPACE}
           export PDK_ROOT=`realpath ../pdks`
-          ls $PDK_ROOT
           cd ${GITHUB_WORKSPACE}/caravel_user_project
           make verify-io_ports
-      
+          make verify-la_test1
+          make verify-la_test2
+          make verify-wb_port
+          SIM=GL make verify-io_ports
+          SIM=GL make verify-la_test1
+          SIM=GL make verify-la_test2
+          SIM=GL make verify-wb_port
+          cd ..
+          
       - name: Run Analog User Project DV
         run: | 
           export CARAVEL_ROOT=${GITHUB_WORKSPACE}
-          export PDK_ROOT=${GITHUB_WORKSPACE}/../pdks
-          export PDK_PATH=${GITHUB_WORKSPACE}/../pdks/sky130A
+          export PDK_ROOT=`realpath ../pdks`
           cd caravel_user_project_analog
           make verify-mprj_por
           SIM=GL make verify-mprj_por
