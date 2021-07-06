@@ -61,7 +61,10 @@ jobs:
           git clone https://github.com/efabless/caravel.git --depth 1 --branch develop
 
       - name: Install The PDK
-        run: bash ${GITHUB_WORKSPACE}/caravel_user_project/.github/scripts/dv/pdkBuild.sh
+        run: |
+           export SKYWATER_COMMIT=bb2f842ac8d1b750677ca25bc71fb312859edb82
+           export OPEN_PDKS_COMMIT=804f48b18519aa67b1f822bdc352ecbad1c056cb
+           bash ${GITHUB_WORKSPACE}/caravel_user_project/.github/scripts/dv/pdkBuild.sh
         env: 
           OPENLANE_TAG: v0.20
           
