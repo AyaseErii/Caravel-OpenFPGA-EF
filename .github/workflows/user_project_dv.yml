@@ -70,6 +70,7 @@ jobs:
           ls
           export CARAVEL_ROOT=${GITHUB_WORKSPACE}
           export PDK_ROOT=`realpath ../pdks`
+          ls $PDK_ROOT
           cd ${GITHUB_WORKSPACE}/caravel_user_project
           make verify-io_ports
       
