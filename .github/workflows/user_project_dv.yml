@@ -65,20 +65,7 @@ jobs:
           OPENLANE_TAG: v0.20
           
       - name: Run Digital User Project DV
-        run: | 
-          export CARAVEL_ROOT=${GITHUB_WORKSPACE}
-          export PDK_ROOT=${GITHUB_WORKSPACE}/pdks
-          export PDK_PATH=${GITHUB_WORKSPACE}/pdks/sky130A
-          cd caravel_user_project
-          make verify-io_ports
-          make verify-la_test1
-          make verify-la_test2
-          make verify-wb_port
-          SIM=GL verify-io_ports
-          SIM=GL verify-la_test1
-          SIM=GL verify-la_test2
-          SIM=GL verify-wb_port  
-          cd ..
+        run: bash ${GITHUB_WORKSPACE}/caravel_user_project/.github/scripts/dv/run-dv-wrapper.sh 0,1,2,3,4 RTL
       
       - name: Run Analog User Project DV
         run: | 
