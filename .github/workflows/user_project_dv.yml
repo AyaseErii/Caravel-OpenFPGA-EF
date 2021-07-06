@@ -60,14 +60,10 @@ jobs:
           git clone https://github.com/efabless/caravel_user_project_analog.git --depth 1 --branch main
 
       - name: Install The PDK
-        run:  |
-             export PDK_ROOT=${GITHUB_WORKSPACE}/pdks
-             docker pull efabless/openlane:v0.20 
-             make skywater-pdk 
-             make skywater-library
-             make open_pdks
-             docker run -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT efabless/openlane:v0.20 bash -c "make build-pdk"
-        
+        run: bash ${GITHUB_WORKSPACE}/.travisCI/utils/pdkBuild.sh
+        env: 
+          OPENLANE_TAG: v0.20
+          
       - name: Run Digital User Project DV
         run: | 
           export CARAVEL_ROOT=${GITHUB_WORKSPACE}
