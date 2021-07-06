@@ -65,7 +65,11 @@ jobs:
           OPENLANE_TAG: v0.20
           
       - name: Run Digital User Project DV
-        run: bash ${GITHUB_WORKSPACE}/caravel_user_project/.github/scripts/dv/run-dv-wrapper.sh 0,1,2,3,4 RTL
+        run: | 
+          cd caravel_user_project
+          make help
+          make verify-io_ports
+#bash ${GITHUB_WORKSPACE}/caravel_user_project/.github/scripts/dv/run-dv-wrapper.sh 0,1,2,3,4 RTL
       
       - name: Run Analog User Project DV
         run: | 
